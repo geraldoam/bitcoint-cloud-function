@@ -24,9 +24,11 @@ def bitcoin(request):
 
 def save_to_bigquery(btc_usd, btc_brl, usd_brl):
     client = bigquery.Client()
+
     project_id = "projeto-etl-442220"
     dataset_id = "bitcoin"
     table_id = "raw_bitcoin"
+    
     table_ref = f"{project_id}.{dataset_id}.{table_id}"
     timestamp = datetime.utcnow().isoformat()
     row_to_insert = {
